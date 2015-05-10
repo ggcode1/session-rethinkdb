@@ -1,9 +1,14 @@
-Connect RethinkDB
+session-rethinkdb
 =================
 
-###RethinkDB session store for Connect
+[![NPM Version][npm-version-image]][npm-url]
+[![NPM Downloads][npm-downloads-image]][npm-url]
+[![Node.js Version][node-image]][node-url]
+[![Build Status][travis-image]][travis-url]
+[![Dependency Status][dependencies-image]][dependencies-url]
+[![Coverage Status][coveralls-image]][coveralls-url]
 
-*Inspired by TJ Holowaychuk's [Connect Redis](https://github.com/visionmedia/connect-redis)*
+###RethinkDBRethinkDB session store for Express and Connect.
 
 ##Installation
 
@@ -11,13 +16,16 @@ Connect RethinkDB
 
 ##Getting started
 
-Note that you must already have Connect installed (```npm install connect```).
+You must already have Express Session or Connect installed (```npm install express```).
 
 ```javascript
-var connect = require('connect'),
-  RDBStore = require('connect-rethinkdb')(connect);
+const express = require('express');
+const app = express();
 
-var rDBStore = new RDBStore({
+const session = require('express-session');
+const RDBStore = require('session-rethinkdb')(session);
+
+const rDBStore = new RDBStore({
   flushOldSessIntvl: 60000,
   clientOptions: {
     db: 'test'
@@ -27,17 +35,13 @@ var rDBStore = new RDBStore({
   table: 'session'
 });
 
-connect().
-use(connect.favicon()).
-use(connect.cookieParser()).
-use(connect.session({
+app.use(session({
   secret: 'keyboard cat',
   cookie: {
     maxAge: 10000
   },
   store: rDBStore
-})).
-use(...);
+}));
 ```
 
 ##Constructor options
@@ -45,10 +49,6 @@ use(...);
 ###flushOldSessIntvl
 Unlike Redis, RethinkDB does not provide a ```SETEX``` function. So we have to flush expired sessions periodically. This defines the amount of time between two flushes.
 *Defaults to 60 seconds*
-
-###clientPromise - **REMOVED IN 0.4.0 !**
-A promise (see [Deferred module](https://github.com/medikoo/deferred)) that resolves with a RethinkDB connection.
-*Defaults to ```undefined```. See ```clientOptions``` below if you can't provide this.*
 
 ###clientOptions
 We need these to connect to our DB. Used only when no ```clientPromise``` is provided.
@@ -64,5 +64,21 @@ If you do not set ```cookie.maxAge``` in ```session``` middleware, sessions will
 
 ## Changelog
 
-### 0.4.0
-Removed `clientPromise` option in constructor. Just use classic RethinkDB `clientOptions`. (It's because we now use under the hood [RQL-Promise](https://github.com/guillaumervls/rql-promise)).
+
+
+[npm-version-image]: https://img.shields.io/npm/v/session-rethinkdb.svg
+[npm-downloads-image]: https://img.shields.io/npm/dm/session-rethinkdb.svg
+[npm-image]: https://nodei.co/npm/session-rethinkdb.png?downloads=true&downloadRank=true&stars=true
+[npm-url]: https://npmjs.org/package/session-rethinkdb
+[travis-image]: https://img.shields.io/travis/llambda/session-rethinkdb/master.svg
+[travis-url]: https://travis-ci.org/llambda/session-rethinkdb
+[dependencies-image]: https://david-dm.org/llambda/session-rethinkdb.svg?style=flat
+[dependencies-url]: https://david-dm.org/llambda/session-rethinkdb
+[coveralls-image]: https://img.shields.io/coveralls/llambda/session-rethinkdb/master.svg
+[coveralls-url]: https://coveralls.io/r/llambda/session-rethinkdb?branch=master
+[node-image]: https://img.shields.io/node/v/session-rethinkdb.svg
+[node-url]: http://nodejs.org/download/
+[gitter-join-chat-image]: https://badges.gitter.im/Join%20Chat.svg
+[gitter-channel-url]: https://gitter.im/llambda/session-rethinkdb
+[express-session-url]: https://github.com/expressjs/session
+[io-url]: https://iojs.org
