@@ -1,8 +1,3 @@
-/*!
- * Connect RethinkDB
- * MIT Licensed
- */
-
 var r = require('rethinkdb'),
   debug = require('debug')('connect:rethinkdb');
 

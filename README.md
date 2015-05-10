@@ -12,11 +12,11 @@ session-rethinkdb
 
 ##Installation
 
-```npm install connect-rethinkdb```
+```npm install session-rethinkdb```
 
 ##Getting started
 
-You must already have Express Session or Connect installed (```npm install express```).
+You must already have Express Session or Connect installed (```npm install express express-session```).
 
 ```javascript
 const express = require('express');
@@ -25,7 +25,7 @@ const app = express();
 const session = require('express-session');
 const RDBStore = require('session-rethinkdb')(session);
 
-const rDBStore = new RDBStore({
+const store = new RDBStore({
   flushOldSessIntvl: 60000,
   clientOptions: {
     db: 'test'
@@ -40,14 +40,14 @@ app.use(session({
   cookie: {
     maxAge: 10000
   },
-  store: rDBStore
+  store: store
 }));
 ```
 
 ##Constructor options
 
 ###flushOldSessIntvl
-Unlike Redis, RethinkDB does not provide a ```SETEX``` function. So we have to flush expired sessions periodically. This defines the amount of time between two flushes.
+Flush expired sessions periodically. This defines the amount of time between two flushes.
 *Defaults to 60 seconds*
 
 ###clientOptions
