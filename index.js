@@ -31,7 +31,7 @@ module.exports = function (connect) {
         .run(conn)
         .tap(function (result) {
           debug('DELETED EXPIRED %j', result);
-        });
+        }).unref();
       }.bind(this), options.flushOldSessIntvl || 60000);
     }.bind(this));
   }
