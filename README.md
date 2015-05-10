@@ -1,5 +1,4 @@
-session-rethinkdb
-=================
+# session-rethinkdb
 
 [![NPM Version][npm-version-image]][npm-url]
 [![NPM Downloads][npm-downloads-image]][npm-url]
@@ -8,13 +7,13 @@ session-rethinkdb
 [![Dependency Status][dependencies-image]][dependencies-url]
 [![Coverage Status][coveralls-image]][coveralls-url]
 
-###RethinkDBRethinkDB session store for Express and Connect.
+### RethinkDBRethinkDB session store for Express and Connect.
 
-##Installation
+## Installation
 
 ```npm install session-rethinkdb```
 
-##Getting started
+## Getting started
 
 You must already have Express Session or Connect installed (```npm install express express-session```).
 
@@ -44,21 +43,21 @@ app.use(session({
 }));
 ```
 
-##Constructor options
+## Constructor options
 
-###flushOldSessIntvl
+### flushOldSessIntvl
 Flush expired sessions periodically. This defines the amount of time between two flushes.
 *Defaults to 60 seconds*
 
-###clientOptions
+### clientOptions
 We need these to connect to our DB. Used only when no ```clientPromise``` is provided.
 *See [RethinkDB's doc](http://rethinkdb.com/api/#js:accessing_rql-connect).*
 
-###table
+### table
 Name of the table in which session data will be stored.
 *Defaults to 'session'*
 
-###browserSessionsMaxAge
+### browserSessionsMaxAge
 If you do not set ```cookie.maxAge``` in ```session``` middleware, sessions will last until the user closes his/her browser. However we cannot keep the session data infinitely (for size and security reasons). In this case, this setting defines the maximum length of a session, even if the user doesn't close his/her browser.
 *Defaults to 1 day*
 
