@@ -26,7 +26,6 @@
   },
   "dependencies": {
     "debug": "~0.7.2",
-    "rethinkdb": "^1.14.0-0",
-    "rql-promise": "^0.1.7"
+    "rethinkdb": "^2.0.0"
   }
 }
