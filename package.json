@@ -5,7 +5,7 @@
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git://github.com/guillaumervls/connect-rethinkdb.git"
+    "url": "git://github.com/llambda/session-rethinkdb.git"
   },
   "keywords": [
     "connect",
@@ -16,7 +16,6 @@
     "db",
     "express"
   ],
-  "author": "guillaumervls",
   "license": "MIT",
   "readmeFilename": "README.md",
   "devDependencies": {
@@ -25,7 +24,7 @@
     "grunt-contrib-watch": "~0.4.0"
   },
   "dependencies": {
-    "debug": "~0.7.2",
+    "debug": "^2.2.0",
     "rethinkdb": "^2.0.0"
   }
 }
