@@ -22,11 +22,6 @@
   ],
   "license": "MIT",
   "readmeFilename": "README.md",
-  "devDependencies": {
-    "grunt": "~0.4.1",
-    "grunt-contrib-jshint": "~0.4.3",
-    "grunt-contrib-watch": "~0.4.0"
-  },
   "dependencies": {
     "debug": "^2.2.0",
     "rethinkdb": "^2.0.0"

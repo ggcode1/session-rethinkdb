@@ -1,5 +1,5 @@
-var r = require('rethinkdb'),
-  debug = require('debug')('connect:rethinkdb');
+var r = require('rethinkdb');
+var debug = require('debug')('session:rethinkdb');
 
 module.exports = function (connect) {
 
