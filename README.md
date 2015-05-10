@@ -7,7 +7,7 @@
 [![Dependency Status][dependencies-image]][dependencies-url]
 [![Coverage Status][coveralls-image]][coveralls-url]
 
-### RethinkDBRethinkDB session store for Express and Connect.
+### [RethinkDB](http://rethinkdb.com/) session store for Express and Connect.
 
 ## Installation
 
