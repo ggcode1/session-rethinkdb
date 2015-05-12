@@ -13,57 +13,9 @@
 
 ```npm install session-rethinkdb```
 
-## Getting started
+## Usage
 
-You must already have Express Session or Connect installed (```npm install express express-session```).
-
-```javascript
-const express = require('express');
-const app = express();
-
-const session = require('express-session');
-const RDBStore = require('session-rethinkdb')(session);
-
-const store = new RDBStore({
-  flushOldSessIntvl: 60000,
-  clientOptions: {
-    db: 'test'
-    host: 'localhost',
-    port: '28015'
-  }
-  table: 'session'
-});
-
-app.use(session({
-  secret: 'keyboard cat',
-  cookie: {
-    maxAge: 10000
-  },
-  store: store
-}));
-```
-
-## Constructor options
-
-### flushOldSessIntvl
-Flush expired sessions periodically. This defines the amount of time between two flushes.
-*Defaults to 60 seconds*
-
-### clientOptions
-We need these to connect to our DB. Used only when no ```clientPromise``` is provided.
-*See [RethinkDB's doc](http://rethinkdb.com/api/#js:accessing_rql-connect).*
-
-### table
-Name of the table in which session data will be stored.
-*Defaults to 'session'*
-
-### browserSessionsMaxAge
-If you do not set ```cookie.maxAge``` in ```session``` middleware, sessions will last until the user closes his/her browser. However we cannot keep the session data infinitely (for size and security reasons). In this case, this setting defines the maximum length of a session, even if the user doesn't close his/her browser.
-*Defaults to 1 day*
-
-## Changelog
-
-
+Refer to the [example application](https://github.com/llambda/session-rethinkdb/blob/master/example.js).
 
 [npm-version-image]: https://img.shields.io/npm/v/session-rethinkdb.svg
 [npm-downloads-image]: https://img.shields.io/npm/dm/session-rethinkdb.svg
