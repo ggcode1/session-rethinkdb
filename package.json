@@ -1,7 +1,7 @@
 {
   "name": "session-rethinkdb",
   "description": "RethinkDB session store for Express and Connect",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "main": "index.js",
   "repository": {
     "type": "git",
