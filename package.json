@@ -25,5 +25,9 @@
   "dependencies": {
     "debug": "^2.2.0",
     "rethinkdbdash": "^2.0.10"
+  },
+  "devDependencies": {
+    "express": "^4.12.3",
+    "express-session": "^1.11.2"
   }
 }
