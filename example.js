@@ -17,17 +17,17 @@ const store = new RDBStore(options);
 app.use(session({
   secret: 'keyboard cat',
   cookie: {
-    maxAge: 10000
+    maxAge: 10000 // ten seconds, for testing
   },
   store: store
 }));
 
 var count = 0;
 
-app.get('/', function (req, res, next) {
-  req.session.count = count++;
-  
-  res.send(req.session);
+app.use('/', function (req, res, next) {
+  var n = req.session.views || 0
+  req.session.views = ++n
+  res.end(n + ' views')
 })
 
 app.listen(3000);

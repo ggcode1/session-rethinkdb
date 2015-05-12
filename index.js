@@ -51,8 +51,8 @@ module.exports = function (connect) {
       .run()
       .tap(function (result) {
         debug('DELETED EXPIRED %j', result);
-      }).unref();
-    }, options.clearInterval || 60000);
+      });
+    }, options.clearInterval || 60000).unref();
   };
 
   RethinkStore.prototype = new Store();
@@ -66,8 +66,7 @@ module.exports = function (connect) {
     .run()
     .then(function (data) {
       debug('GOT %j', data);
-      data = data ? JSON.parse(data.session) : null;
-      return data;
+      return data.session;
     }).asCallback(fn);
   };
 
@@ -76,8 +75,8 @@ module.exports = function (connect) {
 
     var sessionToStore = {
       id: sid,
-      expires: Date.now() + (sess.cookie.originalMaxAge || this.browserSessionsMaxAge),
-      session: JSON.stringify(sess)
+      expires: new Date(Date.now() + (sess.cookie.originalMaxAge || this.browserSessionsMaxAge)),
+      session: sess
     };
     debug('SETTING "%j" ...', sessionToStore);
     return self.r.table(self.options.table)
