@@ -8,8 +8,8 @@ const options = {
     servers: [
         {host: 'localhost', port: 28015},
     ],
-    cleanupInterval: 60000,
-    table: 'session'
+    cleanupInterval: 60000, // optional, default is 60000 (60 seconds)
+    table: 'session' // optional, default is 'session'
 };
 
 const store = new RDBStore(options);
