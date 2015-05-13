@@ -12,6 +12,9 @@ module.exports = function (connect) {
       self.r = options;
     } else if (typeof options === 'object') {
       self.r = require('rethinkdbdash')(options);
+    } else if (options === null || options === undefined) {
+      self.r = require('rethinkdbdash')();
+      options = {};
     } else {
       throw new TypeError('Invalid options');
     }
