@@ -15,11 +15,14 @@ const options = {
 const store = new RDBStore(options);
 
 app.use(session({
+    // https://github.com/expressjs/session#options
     secret: 'keyboard cat',
     cookie: {
         maxAge: 10000 // ten seconds, for testing
     },
-    store: store
+    store: store,
+    resave: true,
+    saveUninitialized: true
 }));
 
 var count = 0;
