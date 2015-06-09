@@ -28,6 +28,7 @@
   },
   "devDependencies": {
     "express": "^4.12.3",
-    "express-session": "^1.11.2"
+    "express-session": "^1.11.2",
+    "tape": "^4.0.0"
   }
 }

@@ -1,5 +1,6 @@
 'use strict';
 var debug = require('debug')('session');
+var util = require('util');
 
 module.exports = function (connect) {
 
@@ -7,6 +8,7 @@ module.exports = function (connect) {
 
 	function RethinkStore(options) {
 		var self = this;
+
 		if (options === null || options === undefined) {
 			self.r = require('rethinkdbdash')();
 		} else if (typeof options === 'function') {
@@ -16,12 +18,12 @@ module.exports = function (connect) {
 		} else {
 			throw new TypeError('Invalid options');
 		}
-
-		options.table = options.table || 'session';
-		options.browserSessionsMaxAge = options.browserSessionsMaxAge || 86400000; // 1 day
 		self.options = options || {};
 
-		Store.call(self, options); // Inherit from Store
+		self.options.table = self.options.table || 'session';
+		self.options.browserSessionsMaxAge = self.options.browserSessionsMaxAge || 86400000; // 1 day
+
+		Store.call(self, self.options); // Inherit from Store
 
 		self.r.tableCreate(self.options.table)
 		.catch(function (error) {
@@ -51,10 +53,10 @@ module.exports = function (connect) {
 			.tap(function (result) {
 				debug('DELETED EXPIRED %j', result);
 			});
-		}, options.clearInterval || 60000).unref();
+		}, self.options.clearInterval || 60000).unref();
 	}
 
-	RethinkStore.prototype = new Store();
+	util.inherits(RethinkStore, Store);
 
 	RethinkStore.prototype.get = function (sid, fn) {
 		var self = this;
@@ -73,7 +75,7 @@ module.exports = function (connect) {
 
 		var sessionToStore = {
 			id: sid,
-			expires: new Date(Date.now() + (sess.cookie.originalMaxAge || this.browserSessionsMaxAge)),
+			expires: new Date(Date.now() + (sess.cookie.originalMaxAge || self.options.browserSessionsMaxAge)),
 			session: sess
 		};
 		debug('SETTING "%j" ...', sessionToStore);
@@ -91,13 +93,31 @@ module.exports = function (connect) {
 		var self = this;
 
 		debug('DELETING "%s" ...', sid);
-		return r.table(self.options.table)
+		return self.r.table(self.options.table)
 		.get(sid)
 		.delete()
 		.run()
 		.tap(function (data) {
 			debug('DELETED %j', data);
 		})
+		.asCallback(fn);
+	};
+
+	RethinkStore.prototype.clear = function (fn) {
+		var self = this;
+
+		return self.r.table(self.options.table)
+		.delete()
+		.run()
+		.asCallback(fn);
+	};
+
+	RethinkStore.prototype.length = function (fn) {
+		var self = this;
+
+		return self.r.table(self.options.table)
+		.count()
+		.run()
 		.asCallback(fn);
 	};
 
