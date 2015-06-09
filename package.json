@@ -31,5 +31,7 @@
     "express-session": "^1.11.2",
     "tape": "^4.0.0"
   },
-  "scripts": {}
+  "scripts": {
+      "test": "node test"
+  }
 }
