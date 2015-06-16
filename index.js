@@ -66,7 +66,7 @@ module.exports = function (connect) {
 		.get(sid)
 		.then(function (data) {
 			debug('GOT %j', data);
-			return data.session;
+			return data ? data.session : null;
 		}).asCallback(fn);
 	};
 
