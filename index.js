@@ -7,6 +7,9 @@ module.exports = function (connect) {
 	var Store = (connect.session) ? connect.session.Store : connect.Store;
 
 	function RethinkStore(options) {
+		if (!(this instanceof RethinkStore)) {
+			return new RethinkStore(options);
+		}
 		var self = this;
 
 		if (options === null || options === undefined) {
@@ -32,7 +35,7 @@ module.exports = function (connect) {
 			}
 		})
 		.then(function () {
-			self.r.table(self.options.table)
+			return self.r.table(self.options.table)
 			.indexStatus('expires')
 			.catch(function (err) {
 				debug('INDEX STATUS %j', err);
@@ -40,19 +43,20 @@ module.exports = function (connect) {
 			})
 			.then(function (result) {
 				debug('PRIOR STEP %j', result);
+
+				self.clearInterval = setInterval(function () {
+					self.r.table(self.options.table)
+					.between(0, self.r.now(), {index: 'expires'})
+					.delete()
+					.run()
+					.tap(function (result) {
+						debug('DELETED EXPIRED %j', result);
+					});
+				}, self.options.clearInterval || 60000).unref();
+
 				self.emit('connect');
 			});
 		})
-
-		self.clearInterval = setInterval(function () {
-			self.r.table(self.options.table)
-			.between(0, self.r.now(), {index: 'expires'})
-			.delete()
-			.run()
-			.tap(function (result) {
-				debug('DELETED EXPIRED %j', result);
-			});
-		}, self.options.clearInterval || 60000).unref();
 	}
 
 	util.inherits(RethinkStore, Store);

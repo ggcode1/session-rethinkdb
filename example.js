@@ -2,13 +2,13 @@ const express = require('express');
 const app = express();
 
 const session = require('express-session');
-const RDBStore = require('session-rethinkdb')(session);
+const RDBStore = require('./index')(session);
 
 const options = {
     servers: [
         {host: 'localhost', port: 28015}
     ],
-    cleanupInterval: 60000, // optional, default is 60000 (60 seconds)
+    cleanupInterval: 5000, // optional, default is 60000 (60 seconds)
     table: 'session' // optional, default is 'session'
 };
 
