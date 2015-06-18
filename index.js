@@ -46,7 +46,7 @@ module.exports = function (connect) {
 
 		self.clearInterval = setInterval(function () {
 			self.r.table(self.options.table)
-			.between(0, r.now(), {index: 'expires'})
+			.between(0, self.r.now(), {index: 'expires'})
 			.delete()
 			.run()
 			.tap(function (result) {
