@@ -84,7 +84,7 @@ module.exports = function (connect) {
 		debug('SETTING "%j" ...', sessionToStore);
 		return self.r.table(self.options.table)
 		.insert(sessionToStore, {
-			conflict: 'update'
+			conflict: 'replace'
 		})
 		.then(function (data) {
 			debug('SET %j', data);
