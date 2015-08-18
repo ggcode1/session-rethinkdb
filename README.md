@@ -9,6 +9,8 @@
 
 [![NPM][npm-image]][npm-url]
 
+![downloads-url]
+
 ### [RethinkDB](http://rethinkdb.com/) session store for Express and Connect.
 
 ## Installation
@@ -35,3 +37,4 @@ Refer to the [example application](https://github.com/llambda/session-rethinkdb/
 [gitter-channel-url]: https://gitter.im/llambda/session-rethinkdb
 [express-session-url]: https://github.com/expressjs/session
 [io-url]: https://iojs.org
+[downloads-url]: https://nodei.co/npm-dl/session-rethinkdb.png?&months=6&height=3
