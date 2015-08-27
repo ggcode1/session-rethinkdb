@@ -20,16 +20,16 @@
     "db",
     "express"
   ],
-  "license": "MIT",
+  "license": "ISC",
   "readmeFilename": "README.md",
   "dependencies": {
     "debug": "^2.2.0",
-    "rethinkdbdash": "^2.0.10"
+    "rethinkdbdash": "^2.1.6"
   },
   "devDependencies": {
-    "express": "^4.12.3",
-    "express-session": "^1.11.2",
-    "tape": "^4.0.0"
+    "express": "^4.13.3",
+    "express-session": "^1.11.3",
+    "tape": "^4.2.0"
   },
   "scripts": {
     "test": "node test"
