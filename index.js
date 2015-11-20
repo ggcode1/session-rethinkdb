@@ -29,7 +29,7 @@ module.exports = function (connect) {
 		Store.call(self, self.options); // Inherit from Store
 
 		self.r.tableCreate(self.options.table)
-    .run()
+		.run()
 		.catch(function (error) {
 			if (!error.message.indexOf('already exists') > 0) {
 				throw error;
@@ -38,7 +38,7 @@ module.exports = function (connect) {
 		.then(function () {
 			return self.r.table(self.options.table)
 			.indexStatus('expires')
-      .run()
+			.run()
 			.catch(function (err) {
 				debug('INDEX STATUS %j', err);
 				return self.r.table(self.options.table).indexCreate('expires').run();
@@ -69,7 +69,7 @@ module.exports = function (connect) {
 		debug('GETTING "%s" ...', sid);
 		return self.r.table(self.options.table)
 		.get(sid)
-    .run()
+		.run()
 		.then(function (data) {
 			debug('GOT %j', data);
 			return data ? data.session : null;
@@ -89,7 +89,7 @@ module.exports = function (connect) {
 		.insert(sessionToStore, {
 			conflict: 'replace'
 		})
-    .run()
+		.run()
 		.then(function (data) {
 			debug('SET %j', data);
 		})
