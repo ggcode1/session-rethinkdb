@@ -24,12 +24,12 @@
   "readmeFilename": "README.md",
   "dependencies": {
     "debug": "^2.2.0",
-    "rethinkdbdash": "^2.1.6"
+    "rethinkdbdash": "^2.2.1"
   },
   "devDependencies": {
     "express": "^4.13.3",
-    "express-session": "^1.11.3",
-    "tape": "^4.2.0"
+    "express-session": "^1.12.1",
+    "tape": "^4.2.2"
   },
   "scripts": {
     "test": "node test"
