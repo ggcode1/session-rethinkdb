@@ -8,7 +8,7 @@ const options = {
     servers: [
         {host: 'localhost', port: 28015}
     ],
-    cleanupInterval: 5000, // optional, default is 60000 (60 seconds)
+    clearInterval: 5000, // optional, default is 60000 (60 seconds). Time between clearing expired sessions.
     table: 'session' // optional, default is 'session'
 };
 
