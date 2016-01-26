@@ -14,8 +14,8 @@ module.exports = function (connect) {
 
 		if (options === null || options === undefined) {
 			self.r = require('rethinkdbdash')();
-		} else if (typeof options === 'function') {
-			self.r = options;
+		} else if (options && options.r && typeof options.r === 'function') {
+			self.r = options.r;
 		} else if (typeof options === 'object') {
 			self.r = require('rethinkdbdash')(options);
 		} else {
