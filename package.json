@@ -10,6 +10,7 @@
   "bugs": {
     "url": "https://github.com/llambda/session-rethinkdb/issues"
   },
+  "files": ["index.js"],
   "homepage": "https://github.com/llambda/session-rethinkdb",
   "keywords": [
     "connect",
