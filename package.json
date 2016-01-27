@@ -1,42 +1,42 @@
 {
-    "name": "session-rethinkdb",
-    "description": "RethinkDB session store for Express and Connect",
-    "version": "1.0.10",
-    "main": "index.js",
-    "repository": {
-        "type": "git",
-        "url": "git://github.com/llambda/session-rethinkdb.git"
-    },
-    "bugs": {
-        "url": "https://github.com/llambda/session-rethinkdb/issues"
-    },
-    "files": [
-        "index.js"
-    ],
-    "homepage": "https://github.com/llambda/session-rethinkdb",
-    "keywords": [
-        "connect",
-        "session",
-        "store",
-        "rethinkdb",
-        "rethink",
-        "db",
-        "express"
-    ],
-    "license": "ISC",
-    "readmeFilename": "README.md",
-    "dependencies": {
-        "debug": "^2.2.0"
-    },
-    "devDependencies": {
-        "express": "^4.13.4",
-        "express-session": "^1.13.0",
-        "tape": "^4.4.0"
-    },
-    "peerDependencies": {
-        "rethinkdbdash": "^2.2.1"
-    },
-    "scripts": {
-        "test": "node test"
-    }
+  "name": "session-rethinkdb",
+  "description": "RethinkDB session store for Express and Connect",
+  "version": "2.0.0",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/llambda/session-rethinkdb.git"
+  },
+  "bugs": {
+    "url": "https://github.com/llambda/session-rethinkdb/issues"
+  },
+  "files": [
+    "index.js"
+  ],
+  "homepage": "https://github.com/llambda/session-rethinkdb",
+  "keywords": [
+    "connect",
+    "session",
+    "store",
+    "rethinkdb",
+    "rethink",
+    "db",
+    "express"
+  ],
+  "license": "ISC",
+  "readmeFilename": "README.md",
+  "dependencies": {
+    "debug": "^2.2.0"
+  },
+  "devDependencies": {
+    "express": "^4.13.4",
+    "express-session": "^1.13.0",
+    "tape": "^4.4.0"
+  },
+  "peerDependencies": {
+    "rethinkdbdash": "^2.2.1"
+  },
+  "scripts": {
+    "test": "node test"
+  }
 }
