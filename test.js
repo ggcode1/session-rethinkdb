@@ -1,3 +1,4 @@
+'use strict';
 var test = require('tape');
 var session = require('express-session');
 var r = require('rethinkdbdash')();
