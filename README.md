@@ -19,7 +19,7 @@
 
 ## Usage
 
-Refer to the [example application](https://github.com/llambda/session-rethinkdb/blob/master/example.js).
+Refer to the [example application](https://github.com/llambda/session-rethinkdb/blob/v2.0/example.js).
 
 Note: API has changed in 2.0.
 
