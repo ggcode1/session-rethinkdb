@@ -1,8 +1,11 @@
 var test = require('tape');
 var session = require('express-session');
+var r = require('rethinkdbdash')();
 var RethinkStore = require('./index.js')(session);
 
-var store = new RethinkStore();
+var store = new RethinkStore(r, {
+	table: 'automatedtest'
+});
 
 test('set then clear', function (t) {
     t.plan(3);

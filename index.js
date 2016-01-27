@@ -6,21 +6,13 @@ module.exports = function (connect) {
 
 	var Store = (connect.session) ? connect.session.Store : connect.Store;
 
-	function RethinkStore(options) {
-		if (!(this instanceof RethinkStore)) {
-			return new RethinkStore(options);
+	function RethinkStore(r, options) {
+		if (!r) {
+			throw new TypeError('You must pass in a rethinkdbdash instance as the first argument');
 		}
 		var self = this;
+		self.r = r;
 
-		if (options === null || options === undefined) {
-			self.r = require('rethinkdbdash')();
-		} else if (options && options.r && typeof options.r === 'function') {
-			self.r = options.r;
-		} else if (typeof options === 'object') {
-			self.r = require('rethinkdbdash')(options);
-		} else {
-			throw new TypeError('Invalid options');
-		}
 		self.options = options || {};
 
 		self.options.table = self.options.table || 'session';

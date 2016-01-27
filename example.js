@@ -4,15 +4,16 @@ const app = express();
 const session = require('express-session');
 const RDBStore = require('./index')(session);
 
-const options = {
+const r = require('rethinkdbdash')({
     servers: [
         {host: 'localhost', port: 28015}
-    ],
-    clearInterval: 5000, // optional, default is 60000 (60 seconds). Time between clearing expired sessions.
-    table: 'session' // optional, default is 'session'
-};
+    ]
+});
 
-const store = new RDBStore(options);
+const store = new RDBStore(r,  {
+    browserSessionsMaxAge: 5000, // optional, default is 60000 (60 seconds). Time between clearing expired sessions.
+    table: 'session' // optional, default is 'session'. Table to store sessions in.
+});
 
 app.use(session({
     // https://github.com/expressjs/session#options

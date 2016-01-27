@@ -21,6 +21,8 @@
 
 Refer to the [example application](https://github.com/llambda/session-rethinkdb/blob/master/example.js).
 
+Note: API has changed in 2.0.
+
 [npm-version-image]: https://img.shields.io/npm/v/session-rethinkdb.svg
 [npm-downloads-image]: https://img.shields.io/npm/dm/session-rethinkdb.svg
 [npm-image]: https://nodei.co/npm/session-rethinkdb.png?downloads=true&downloadRank=true&stars=true
