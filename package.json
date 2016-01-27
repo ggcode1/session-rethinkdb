@@ -1,7 +1,7 @@
 {
   "name": "session-rethinkdb",
   "description": "RethinkDB session store for Express and Connect",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "main": "index.js",
   "repository": {
     "type": "git",
@@ -10,7 +10,9 @@
   "bugs": {
     "url": "https://github.com/llambda/session-rethinkdb/issues"
   },
-  "files": ["index.js"],
+  "files": [
+    "index.js"
+  ],
   "homepage": "https://github.com/llambda/session-rethinkdb",
   "keywords": [
     "connect",
