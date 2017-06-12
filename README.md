@@ -19,9 +19,30 @@
 
 ## Usage
 
-Refer to the [example application](https://github.com/llambda/session-rethinkdb/blob/v2.0/example.js).
+```JS
+const r = require('rethinkdbdash')();
+const session = require('express-session');
+const RDBStore = require('session-rethinkdb')(session);
 
-Note: API has changed in 2.0.
+const store = new SessionStore(r, {
+  browserSessionsMaxAge: 60000, // optional, default is 60000. After how much time should an expired session be cleared from the database
+  clearInterval: 60000, // optional, default is 60000. How often do you want to check and clear expired sessions
+});
+
+app.use(session({
+    // https://github.com/expressjs/session#options
+    secret: 'keyboard cat',
+		// Pass the store to express-session
+    store: store,
+		// This needs to be set for session-rethinkdb to work!
+    resave: true,
+    saveUninitialized: true
+}));
+```
+
+> **Note:** The API has changed in v2.0.
+
+Refer to the [example application](https://github.com/llambda/session-rethinkdb/blob/v2.0/example.js) for a full example.
 
 [npm-version-image]: https://img.shields.io/npm/v/session-rethinkdb.svg
 [npm-downloads-image]: https://img.shields.io/npm/dm/session-rethinkdb.svg
