@@ -26,12 +26,12 @@
   "license": "ISC",
   "readmeFilename": "README.md",
   "dependencies": {
-    "debug": "^2.2.0"
+    "debug": "^3.1.0"
   },
   "devDependencies": {
-    "express": "^4.13.4",
-    "express-session": "^1.13.0",
-    "tape": "^4.4.0"
+    "express": "^4.16.2",
+    "express-session": "^1.15.6",
+    "tape": "^4.8.0"
   },
   "peerDependencies": {
     "rethinkdbdash": "^2.2.1"
