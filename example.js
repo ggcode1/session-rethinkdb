@@ -13,7 +13,8 @@ const r = require('rethinkdbdash')({
 
 const store = new RDBStore(r,  {
     browserSessionsMaxAge: 5000, // optional, default is 60000 (60 seconds). Time between clearing expired sessions.
-    table: 'session' // optional, default is 'session'. Table to store sessions in.
+    table: 'session', // optional, default is 'session'. Table to store sessions in.
+    useIndex: false // optional, default is true. This must be true for sessions to be cleared automatically.
 });
 
 app.use(session({
