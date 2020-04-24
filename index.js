@@ -17,6 +17,7 @@ module.exports = function (connect) {
 
 		self.options.table = self.options.table || 'session';
 		self.options.browserSessionsMaxAge = self.options.browserSessionsMaxAge || 86400000; // 1 day
+		self.options.useIndex = self.options.useIndex == null ? true : self.options.useIndex
 
 		Store.call(self, self.options); // Inherit from Store
 
@@ -28,6 +29,8 @@ module.exports = function (connect) {
 			}
 		})
 		.then(function () {
+			if (!self.options.useIndex) return; // Don't create index or set up clearInterval
+
 			return self.r.table(self.options.table)
 			.indexStatus('expires')
 			.run()
